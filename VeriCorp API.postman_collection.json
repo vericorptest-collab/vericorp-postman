@@ -2,7 +2,7 @@
   "info": {
     "name": "VeriCorp API",
     "_postman_id": "vericorp-api-collection",
-    "description": "European company verification API. Validate VAT numbers, look up company data across 28 countries (27 EU + UK).\n\nGet your API key at: https://rapidapi.com/vericorp/api/vericorp-api",
+    "description": "European company verification API. Validate VAT numbers, look up company data across 28 countries (27 EU + UK).\n\nGet your API key at: https://rapidapi.com/vericorptestcollab/api/vericorp",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "auth": {

@@ -1,6 +1,6 @@
 # VeriCorp API — Postman Collection
 
-Ready-to-use Postman collection for the [VeriCorp API](https://rapidapi.com/vericorp/api/vericorp-api).
+Ready-to-use Postman collection for the [VeriCorp API](https://rapidapi.com/vericorptestcollab/api/vericorp).
 
 ## Quick Start
 
@@ -22,7 +22,7 @@ Every request includes **test scripts** that validate response status and schema
 
 ## Get an API Key
 
-Sign up at [RapidAPI](https://rapidapi.com/vericorp/api/vericorp-api) to get your key.
+Sign up at [RapidAPI](https://rapidapi.com/vericorptestcollab/api/vericorp) to get your key.
 
 ## License
 
