@@ -1,0 +1,334 @@
+{
+  "info": {
+    "name": "VeriCorp API",
+    "_postman_id": "vericorp-api-collection",
+    "description": "European company verification API. Validate VAT numbers, look up company data across 28 countries (27 EU + UK).\n\nGet your API key at: https://rapidapi.com/vericorp/api/vericorp-api",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      { "key": "key", "value": "X-RapidAPI-Key", "type": "string" },
+      { "key": "value", "value": "{{api_key}}", "type": "string" },
+      { "key": "in", "value": "header", "type": "string" }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "pm.request.headers.add({ key: 'X-RapidAPI-Host', value: 'vericorp-api.p.rapidapi.com' });"
+        ]
+      }
+    }
+  ],
+  "variable": [
+    { "key": "base_url", "value": "https://vericorp-api.p.rapidapi.com" },
+    { "key": "api_key", "value": "YOUR_RAPIDAPI_KEY" }
+  ],
+  "item": [
+    {
+      "name": "Company Lookup",
+      "description": "Look up companies by tax ID. 8 countries with full enrichment, 20 with basic VIES data.",
+      "item": [
+        {
+          "name": "Portugal — PT502011378",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/v1/company/PT502011378", "host": ["{{base_url}}"], "path": ["v1", "company", "PT502011378"] }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "pm.test('Has company name', () => { const json = pm.response.json(); pm.expect(json.name).to.be.a('string'); });",
+                  "pm.test('Country is PT', () => { const json = pm.response.json(); pm.expect(json.country).to.eql('PT'); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Denmark — DK10150817",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/v1/company/DK10150817", "host": ["{{base_url}}"], "path": ["v1", "company", "DK10150817"] }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "pm.test('Country is DK', () => pm.expect(pm.response.json().country).to.eql('DK'));",
+                  "pm.test('Source is cvr', () => pm.expect(pm.response.json().source).to.eql('cvr'));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Norway — NO923609016",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/v1/company/NO923609016", "host": ["{{base_url}}"], "path": ["v1", "company", "NO923609016"] }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "pm.test('Source is brreg', () => pm.expect(pm.response.json().source).to.eql('brreg'));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Finland — FI2077474-0",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/v1/company/FI20774740", "host": ["{{base_url}}"], "path": ["v1", "company", "FI20774740"] }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "pm.test('Source is prh', () => pm.expect(pm.response.json().source).to.eql('prh'));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Estonia — EE10137025",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/v1/company/EE10137025", "host": ["{{base_url}}"], "path": ["v1", "company", "EE10137025"] }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "pm.test('Source is ariregister', () => pm.expect(pm.response.json().source).to.eql('ariregister'));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Poland — PL5260250995",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/v1/company/PL5260250995", "host": ["{{base_url}}"], "path": ["v1", "company", "PL5260250995"] }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "pm.test('Source is krs', () => pm.expect(pm.response.json().source).to.eql('krs'));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Czech Republic — CZ00075370",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/v1/company/CZ00075370", "host": ["{{base_url}}"], "path": ["v1", "company", "CZ00075370"] }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "pm.test('Source is ares', () => pm.expect(pm.response.json().source).to.eql('ares'));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "UK — GB00445790 (by company number)",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/v1/company/gb/00445790", "host": ["{{base_url}}"], "path": ["v1", "company", "gb", "00445790"] }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "pm.test('Source is companies_house', () => pm.expect(pm.response.json().source).to.eql('companies_house'));",
+                  "pm.test('Has directors', () => pm.expect(pm.response.json().directors).to.be.an('array'));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "VIES-only — DE811871080 (Germany)",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/v1/company/DE811871080", "host": ["{{base_url}}"], "path": ["v1", "company", "DE811871080"] }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "pm.test('Source is vies', () => pm.expect(pm.response.json().source).to.eql('vies'));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "VAT Validation",
+      "description": "Validate VAT numbers — format check + VIES verification.",
+      "item": [
+        {
+          "name": "Valid VAT — PT502011378",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/v1/validate/PT502011378", "host": ["{{base_url}}"], "path": ["v1", "validate", "PT502011378"] }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "pm.test('Format is valid', () => pm.expect(pm.response.json().format_valid).to.be.true);",
+                  "pm.test('Has country', () => pm.expect(pm.response.json().country).to.eql('PT'));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Invalid VAT — PT000000000",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/v1/validate/PT000000000", "host": ["{{base_url}}"], "path": ["v1", "validate", "PT000000000"] }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "pm.test('Format invalid or VAT invalid', () => { const json = pm.response.json(); pm.expect(json.format_valid === false || json.vat_valid === false).to.be.true; });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Batch Lookup",
+      "description": "Look up multiple companies in one request (max 10). Pro plan and above.",
+      "item": [
+        {
+          "name": "Batch — 3 companies",
+          "request": {
+            "method": "POST",
+            "url": { "raw": "{{base_url}}/v1/batch", "host": ["{{base_url}}"], "path": ["v1", "batch"] },
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tax_ids\": [\"PT502011378\", \"DK10150817\", \"NO923609016\"]\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "pm.test('Has results array', () => pm.expect(pm.response.json().results).to.be.an('array'));",
+                  "pm.test('3 results returned', () => pm.expect(pm.response.json().results).to.have.lengthOf(3));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Utilities",
+      "description": "System endpoints — health check and supported countries.",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/v1/health", "host": ["{{base_url}}"], "path": ["v1", "health"] }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "pm.test('Has status field', () => pm.expect(pm.response.json().status).to.be.a('string'));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Supported Countries",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/v1/countries", "host": ["{{base_url}}"], "path": ["v1", "countries"] }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "pm.test('Has countries array', () => pm.expect(pm.response.json().countries).to.be.an('array'));",
+                  "pm.test('At least 28 countries', () => pm.expect(pm.response.json().total).to.be.at.least(28));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
